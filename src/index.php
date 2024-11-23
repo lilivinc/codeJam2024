@@ -46,8 +46,8 @@
                     <div class="p-2 p-1">Name of event:</div>
                     <input id="inputNameField" type="text" class=" w-9/12 border-2 border-solid rounded-lg px-2 py-0.5">
                 </div>
-                <div class="flex relative p-6 ">
-                    <div class="p-2 p-1">Duration:</div>
+                <div class="z-10 flex relative p-6">
+                    <div class="p-2">Duration:</div>
                     <button id="menuButton" class="w-4/12 border-2 border-solid rounded-lg px-2 py-0.5 ml-11"></button>
                     <div id="dropdownMenu" class="absolute mt-2 w-48 bg-white shadow-lg rounded-lg border overflow-y-auto max-h-64 hidden">
                         <ul id="menuItems" class="divide-y divide-gray-200">
@@ -60,8 +60,9 @@
                     </div>
                     
                 </div>
-                <div id="eventName" class="flex flex-row relative pl-6">
-                    <div class="p-2 p-1">Name of event:</div>
+                
+                <div  class="z-0 flex flex-row relative pl-6">
+                    <div class="p-2 ">Starting Time:</div>
                     <input id="inputNameField" type="text" class=" w-9/12 border-2 border-solid rounded-lg px-2 py-0.5">
                 </div>
                 <div>
