@@ -87,3 +87,14 @@ if (require.main === module) {
         });
     location.reload();
 }
+
+// The PHP variable $jsonBlocks is echoed into the JavaScript variable blocks
+var blocks = <?php echo $jsonBlocks; ?>;
+
+function deleteTask (startingTimeToDelete, blocks) {
+    for (let eventIndex = 0 ; eventIndex < blocks.length; eventIndex++) {
+        if (blocks[eventIndex]["startingTime"] == startingTimeToDelete) {
+            blocks.splice(eventIndex, eventIndex +1)
+        }
+    }
+}
