@@ -39,27 +39,42 @@
         </div>
 
 
-
-    </div>
-
-        <div class=" basis-1/2 border-4 border-red-500 border-solid">
-            This is a box with a dashed red border : input
-
-            <div class="flex relative border-4 border-green-500 border-solid">
-                <button id="menuButton" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Duration</button>
-                <div id="dropdownMenu"
-                    class="absolute mt-2 w-48 bg-white shadow-lg rounded-lg border overflow-y-auto max-h-48">
-                    <ul id="menuItems" class="divide-y divide-gray-200">
-                        <li class="px-4 py-2 hover:bg-gray-100" data-value="30">0h30</li>
-                        <li class="px-4 py-2 hover:bg-gray-100" data-value="60">1h</li>
-                        <li class="px-4 py-2 hover:bg-gray-100" data-value="90">1h30</li>
-                        <li class="px-4 py-2 hover:bg-gray-100" data-value="120">2h00</li>
-                        <li class="px-4 py-2 hover:bg-gray-100" data-value="150">2h30</li>
-                        <li class="px-4 py-2 hover:bg-gray-100" data-value="180">3h00</li>
+        <div class="basis-1/2 p-10">
+            <div class="border-4 border-slate-500 border-double">
+                <div class="text-2xl font-medium text-center p-6">Welcome to your Daily Planner</div>
+                <div id="eventName" class="flex flex-row relative pl-6">
+                    <div class="p-2 p-1">Name of event:</div>
+                    <input id="inputNameField" type="text" class=" w-9/12 border-2 border-solid rounded-lg px-2 py-0.5">
                 </div>
-                <div id="selectedDuration" class="pl-10">Selected: </div>
+                <div class="flex relative p-6 ">
+                    <div class="p-2 p-1">Duration:</div>
+                    <button id="menuButton" class="w-4/12 border-2 border-solid rounded-lg px-2 py-0.5 ml-11"></button>
+                    <div id="dropdownMenu" class="absolute mt-2 w-48 bg-white shadow-lg rounded-lg border overflow-y-auto max-h-64 hidden">
+                        <ul id="menuItems" class="divide-y divide-gray-200">
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="0:30">0h30</li>
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="1:00">1h</li>
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="1:30">1h30</li>
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="2:00">2h00</li>
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="2:30">2h30</li>
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="3:00">3h00</li>
+                    </div>
+                    
                 </div>
+                <div id="eventName" class="flex flex-row relative pl-6">
+                    <div class="p-2 p-1">Name of event:</div>
+                    <input id="inputNameField" type="text" class=" w-9/12 border-2 border-solid rounded-lg px-2 py-0.5">
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2 p-6 pl-12">
+                        <input type="checkbox" id="eventCheckbox" class="w-5 h-5 text-blue-500 focus:ring-blue-300 rounded border-gray-300 pl-6">
+                        <label for="eventCheckbox" class="text-gray-700 "> Blocked</label>
+                    </div>
+                </div>
+            </div>
+
         </div>
+        
+
     </div>
 
 
@@ -89,9 +104,20 @@
             duration = e.target.dataset.value; // Get value from data attribute
             console.log('Selected Value:', duration); // Log or use the value
             dropdownMenu.classList.add('hidden'); // Optionally hide the menu
-            selectedDuration.textContent = `Selected: ${duration}`;
+            
+            menuButton.textContent = `${duration}`;
         }
     });
 
+    inputNameField.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            // Action when "Enter" key is pressed
+            inputNameField.blur();
+            inputNameField.classList.remove('border-pink-500');
+            inputNameField.classList.add('border-blue-500');
+            
+            // You can do more here, like submitting the form or changing the UI
+        }
+    });
 </script>
 </html>
