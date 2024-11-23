@@ -1,0 +1,26 @@
+[
+    {
+        "type": 1,
+        "name": "Event 1",
+        "startingTime": 12,
+        "endingTime": 14
+    },
+    {
+        "type": 2,
+        "name": "Event 2",
+        "startingTime": 15,
+        "endingTime": 17
+    },
+    {
+        "type": "1",
+        "name": "Event 4",
+        "startingTime": "12",
+        "endingTime": 32
+    },
+    {
+        "type": "1",
+        "name": "Event 4",
+        "startingTime": "12",
+        "endingTime": "32"
+    }
+]
