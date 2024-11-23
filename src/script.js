@@ -29,17 +29,17 @@ function blockedTimes(startTask, endTask, arrayBlockedBlocks) {
 function availableBlocks(lenTask, arrayBlockedBlocks) {
     const arrayValidStartTimes = []
     for (let iBlock = 0; iBlock < lenDay; iBlock++) {
-        if (iBlock + lenTask <= lenDay) { 
+        if (iBlock + lenTask <= lenDay) {
             var invalidTaskBlock = false;
             for (let iBlockCheck = iBlock; iBlockCheck < (iBlock + lenTask); iBlockCheck++) {
                 if (arrayBlockedBlocks.includes(iBlockCheck)) {
                     invalidTaskBlock = true;
                     break;
                 }
-            
+
             }
-            if (! invalidTaskBlock) {
-            arrayValidStartTimes.push(iBlock);
+            if (!invalidTaskBlock) {
+                arrayValidStartTimes.push(iBlock);
             }
         }
     }
@@ -63,4 +63,27 @@ if (require.main === module) {
 
     var newTaskTimes = availableBlocks(1, arrayBlockedBlocks);
     console.log(newTaskTimes);
+}function addBlock(type, name, startingTime, endingTime) {
+    alert("test");
+    // Create a FormData object to send data to the server
+    const formData = new FormData();
+    formData.append('type', type);
+    formData.append('name', name);
+    formData.append('startingTime', startingTime);
+    formData.append('endingTime', endingTime);
+
+    // Send data to the PHP script using Fetch API
+    fetch('addBlock.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json()) // assuming PHP returns a JSON response
+        .then(data => {
+            console.log('Success:', data);
+            alert('Block added successfully!');
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    location.reload();
 }
