@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>Calendar2x</title>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="h-screen flex flex-row">
+        <div class="  basis-1/2 border-4 border-blue-500 border-dashed">
+            This is a box with a dashed blue border : planner
+        </div>
+        <div class=" basis-1/2 border-4 border-red-500 border-solid">
+            This is a box with a dashed red border : input
+
+            <div class="flex relative border-4 border-green-500 border-solid">
+                <button id="menuButton" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Duration</button>
+                <div id="dropdownMenu"
+                    class="absolute mt-2 w-48 bg-white shadow-lg rounded-lg border overflow-y-auto max-h-48">
+                    <ul id="menuItems" class="divide-y divide-gray-200">
+                        <li class="px-4 py-2 hover:bg-gray-100" data-value="30">0h30</li>
+                        <li class="px-4 py-2 hover:bg-gray-100" data-value="60">1h</li>
+                        <li class="px-4 py-2 hover:bg-gray-100" data-value="90">1h30</li>
+                        <li class="px-4 py-2 hover:bg-gray-100" data-value="120">2h00</li>
+                        <li class="px-4 py-2 hover:bg-gray-100" data-value="150">2h30</li>
+                        <li class="px-4 py-2 hover:bg-gray-100" data-value="180">3h00</li>
+                </div>
+                <div id="selectedDuration" class="pl-10">Selected: </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const menuButton = document.getElementById('menuButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    var duration;
+
+    menuButton.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('hidden'); // Toggles the visibility
+    });
+
+    // Optional: Close the menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!menuButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.add('hidden');
+        }
+    });
+
+    dropdownMenu.addEventListener('click', (e) => {
+        dropdownMenu.classList.add('hidden');
+    })
+
+    menuItems.addEventListener('click', (e) => {
+        if (e.target.tagName === 'LI') { // Ensure it's a list item
+            duration = e.target.dataset.value; // Get value from data attribute
+            console.log('Selected Value:', duration); // Log or use the value
+            dropdownMenu.classList.add('hidden'); // Optionally hide the menu
+            selectedDuration.textContent = `Selected: ${duration}`;
+        }
+    });
+
+</script>
+
+</html>
