@@ -8,7 +8,7 @@
     <title>Daily Planner</title>
     <script src="script.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    // The PHP variable $jsonBlocks is echoed into the JavaScript variable blocks
+
     <script> var blocks = <?php echo $jsonBlocks; ?>; </script>
 
     <style>
@@ -29,6 +29,7 @@
         .activity-block:hover {
             background-color: rgba(59, 130, 246, 1); /* Darker blue */
         }
+
     </style>
 </head>
 
@@ -92,7 +93,7 @@
                                             
                                             <!-- Deleting activity component -->
                                             <button id="delete-btn-<?php echo $time; ?>"
-                                                class="absolute top-1 right-1 text-red-400 hover:text-red-700 text-lg"
+                                                class="absolute top-3 right-6 text-red-400 hover:text-red-700 text-2xl"
                                                 onclick="deleteActivity('<?php echo $time; ?>'); event.stopPropagation();"> &times;
                                             </button>
                                             </div>
