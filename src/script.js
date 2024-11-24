@@ -2,27 +2,62 @@
 
 const lenDay = 48;
 var arrayBlockedBlocks = [];
-// var lenTask = document.getElementById('inputChiffreChoisi').value;
-// check with Lili
+var lenTask = document.getElementById("durationLine2").value;
 
 function convert24To48(timeIn24) {
-    intTimeIn24 = parseFloat(timeIn24)
-    var timeIn48 = intTimeIn24 * 2
+    var floatTimeIn24 = parseFloat(timeIn24)
+    var timeIn48 = floatTimeIn24 * 2
     return timeIn48
-}
+};
+
 
 function convert48To24(timeIn48) {
-    intTimeIn48 = parseInt(timeIn48)
+    var intTimeIn48 = parseInt(timeIn48)
     var timeIn24 = intTimeIn48 / 2
     return timeIn24
-}
+};
+
+
+function convertStrTo48(timeInStr) {
+    var time24 = 0;
+    const intHour24 = parseFloat(timeInStr.slice(0,2));
+    const minutes = timeInStr.slice(3);
+    if (minutes == "30") {
+        time24 = intHour24 + 0.5;
+    }
+    else {
+        time24 = intHour24;
+    }
+    var time48 = convert24To48(time24);
+    return time48;
+};
+
+function convert48ToStr(timeIn48) {
+    var timeStr = "";
+    var strHour = ""
+    var time24 = convert48To24(timeIn48);
+    var strTime24 = time24.toString()
+    if ((timeIn48 % 2) == 1) {
+        const listHourMin = strTime24.split('.');
+        strHour = listHourMin[0];
+        var add0StrHour = strHour;
+        if (parseInt(strHour) < 10) {
+            add0StrHour = '0' + strHour;
+        };
+        timeStr = add0StrHour + ':30'
+    }
+    else {
+        timeStr = strTime24 + ':00'
+    };
+    return timeStr;
+};
 
 //returns start times (base 48) of all unmovable times
 function blockedTimes(startTask, endTask, arrayBlockedBlocks) {
     for (let iBlock = startTask; iBlock < endTask; iBlock++) {
         arrayBlockedBlocks.push(iBlock);
     }
-}
+};
 
 //returns possible starting times (in base 48) based on length of event
 function availableBlocks(lenTask, arrayBlockedBlocks) {
@@ -164,6 +199,14 @@ function deleteTask(startingTimeToDelete, blocks) {
     }
 }
 
+
+function randomValidBlock(arrayValidStartTimes) {
+    var lenArray = arrayValidStartTimes.length;
+    var randIndex = Math.floor(Math.random()*lenArray);
+    var randStartTime = arrayValidStartTimes[randIndex];
+    return randStartTime;
+}
+
 /*
 if (require.main === module) {
 
@@ -184,7 +227,8 @@ if (require.main === module) {
 
     //deleteTask (15, blocksSchedule)
     //console.log(blocksSchedule)
-}*/
+}
+*/
 
 function test(txt) {
     console.log(txt);
