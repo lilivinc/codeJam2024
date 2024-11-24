@@ -1,19 +1,5 @@
 [
     {
-        "id": 7,
-        "type": "3",
-        "name": "Event 4",
-        "startingTime": "17:00",
-        "endingTime": "32"
-    },
-    {
-        "id": "361",
-        "type": "3",
-        "name": "relax1",
-        "startingTime": "16:30",
-        "endingTime": "12:00"
-    },
-    {
         "id": "240",
         "type": "2",
         "name": "eat1",
@@ -21,38 +7,31 @@
         "endingTime": "12:00"
     },
     {
-        "id": "834",
-        "type": "1",
-        "name": "study1",
-        "startingTime": "18:00",
-        "endingTime": "12:00"
-    },
-    {
-        "id": "00:00",
-        "type": "4",
-        "name": "surf",
-        "startingTime": "00:00",
-        "endingTime": "12:00"
-    },
-    {
-        "id": "00:30",
+        "id": "783",
         "type": "1",
         "name": "spikeball",
         "startingTime": "00:30",
-        "endingTime": "78:89"
+        "endingTime": "18:30"
     },
     {
-        "id": "01:00",
+        "id": "923",
         "type": "2",
         "name": "tennis",
         "startingTime": "01:00",
-        "endingTime": "34:89"
+        "endingTime": "14:00"
     },
     {
-        "id": "02:00",
-        "type": "3",
-        "name": "ultimate",
-        "startingTime": "02:00",
-        "endingTime": "67:89"
+        "id": "256",
+        "type": "4",
+        "name": "codejam",
+        "startingTime": "04:00",
+        "endingTime": "13:30"
+    },
+    {
+        "id": "5067",
+        "type": "1",
+        "name": "test3",
+        "startingTime": "03:00",
+        "endingTime": "15:00"
     }
 ]

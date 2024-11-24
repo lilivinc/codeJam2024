@@ -197,7 +197,7 @@ function addEvent() {
     var name = document.getElementById("nameOfEvent").value
     var startingTime = document.getElementById("startingTime").value;
     var endingTime = document.getElementById("endingTime").value;
-    var id = startingTime;
+    var id = Math.floor(Math.random() * (10000 - 0 + 1));
     console.log("name: ", name)
     console.log("tyep: ", type)
     console.log("time: ", startingTime)

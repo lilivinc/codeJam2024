@@ -58,43 +58,6 @@
                         <!--Examples of code (used to check if code works), have to generalize this somehow-->
                         <?php 
                         
-                        $activities = [
-                            "08:00" => "Morning Meeting",
-                            "12:30" => "Lunch Break",
-                            "15:00" => "Project Discussion",
-                            "18:30" => "Workout",
-                        ];       
-                        
-
-                        /*
-                        $activities = [
-                            [
-                                "type" => 1,
-                                "name"=> "Event 1",
-                                "startingTime"=> 12,
-                                "endingTime"=> 14
-                            ],
-                            [
-                                "type"=> 2,
-                                "name"=> "Event 2",
-                                "startingTime"=> 15,
-                                "endingTime"=> 17
-                            ],
-                            [
-                                "type"=> 1,
-                                "name"=> "Event 4",
-                                "startingTime"=> 12,
-                                "endingTime"=> 32
-                            ],
-                            [
-                                "type"=> 1,
-                                "name"=>"Event 4",
-                                "startingTime"=> 12,
-                                "endingTime"=> 32
-                            ]
-                            ];
-                        */
-                        
                         for($i = 0; $i <24; $i++){
                             for($j = 0; $j <= 3; $j = $j + 3){
                                 $hours = $i < 10 ? "0$i" : $i;
@@ -121,12 +84,13 @@
                                             <div id="activity-<?php echo $time; ?>"
                                                 class="activity-block  p-4 rounded-lg cursor-pointer hover:bg-gray-300"
                                                 >
-
+                                                <div class="flex flex-col">
                                                 <!--Activity text (dpeends on list of activity from above-->
-                                                <p id="activity-text-<?php echo $time; ?>" class="text-gray-600 font-medium">
-                                                    <?php echo $block["name"]; ?>; <?php $block["type"]?>
+                                                <p id="activity-text-<?php echo $time; ?>" class="text-gray-800 font-medium">
+                                                    <?php echo $block["name"]; ?> 
                                                 </p>
-                                            
+                                                <div class="text-xs text-gray-600 pl-5 mt-1">Ending time: <?php echo $block["endingTime"]; ?></div>
+                                                </div>
                                             <!-- Deleting activity component -->
                                             <button id="delete-btn-<?php echo $time; ?>"
                                                 class="absolute w-8 top-3 right-4 bg-slate-600 text-red-400 hover:text-red-700 text-2xl rounded-full"
