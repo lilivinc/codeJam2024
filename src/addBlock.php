@@ -8,12 +8,14 @@ if (file_exists($filePath)) {
 } else {
     $blocks = [
         [
+            "id" => 1,
             "type" => 1,
             "name" => "Event 1",
             "startingTime" => 12,
             "endingTime" => 14,
         ],
         [
+            "id" => 2,
             "type" => 2,
             "name" => "Event 2",
             "startingTime" => 15,
@@ -27,13 +29,15 @@ if (file_exists($filePath)) {
 
 // Example to add a new block (using POST request)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'] ?? null;
     $type = $_POST['type'] ?? null;
     $name = $_POST['name'] ?? null;
     $startingTime = $_POST['startingTime'] ?? null;
     $endingTime = $_POST['endingTime'] ?? null;
 
-    if ($type && $name && $startingTime && $endingTime) {
+    if ($id && $type && $name && $startingTime && $endingTime) {
         $newBlock = [
+            "id" => $id,
             "type" => $type,
             "name" => $name,
             "startingTime" => $startingTime,
