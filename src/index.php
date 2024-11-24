@@ -8,7 +8,7 @@
     <title>Daily Planner</title>
     <script src="script.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    // The PHP variable $jsonBlocks is echoed into the JavaScript variable blocks
+
     <script> var blocks = <?php echo $jsonBlocks; ?>; </script>
 
     <style>
@@ -29,17 +29,17 @@
         .activity-block:hover {
             background-color: rgba(59, 130, 246, 1); /* Darker blue */
         }
+
     </style>
 </head>
 
 <body>
-    <div class="h-screen flex flex-row">
-        <div class="bg-stone-300 basis-1/2 border-4 border-blue-500 border-dashed"; style="overflow-y:scroll">
-            This is a box with a dashed blue border : planner
+    <div class="h-screen flex flex-row bg-stone-50 font-mono">
+        <div class=" basis-1/2  p-10"; style="overflow-y:scroll">
             
              <!--Head (name/description)-->
             <header class = "text-center slate-800">
-                <h1 class = "font-mono font-bold text-2xl mb-2">Daily Planner</h1>
+                <h1 class = "font-mono font-bold text-2xl mb-2">This is Your Day</h1>
                 <p class = "font-mono text-lg mb-6">Plan your day in 30 minute intervals!</p>
             </header>
 
@@ -54,13 +54,44 @@
 
                         <!--Examples of code (used to check if code works), have to generalize this somehow-->
                         <?php 
+                        
                         $activities = [
                             "08:00" => "Morning Meeting",
                             "12:30" => "Lunch Break",
                             "15:00" => "Project Discussion",
                             "18:30" => "Workout",
                         ];       
+                        
 
+                        /*
+                        $activities = [
+                            [
+                                "type" => 1,
+                                "name"=> "Event 1",
+                                "startingTime"=> 12,
+                                "endingTime"=> 14
+                            ],
+                            [
+                                "type"=> 2,
+                                "name"=> "Event 2",
+                                "startingTime"=> 15,
+                                "endingTime"=> 17
+                            ],
+                            [
+                                "type"=> 1,
+                                "name"=> "Event 4",
+                                "startingTime"=> 12,
+                                "endingTime"=> 32
+                            ],
+                            [
+                                "type"=> 1,
+                                "name"=>"Event 4",
+                                "startingTime"=> 12,
+                                "endingTime"=> 32
+                            ]
+                            ];
+                        */
+                        
                         for($i = 0; $i <24; $i++){
                             for($j = 0; $j <= 3; $j = $j + 3){
                                 $hours = $i < 10 ? "0$i" : $i;
@@ -92,7 +123,7 @@
                                             
                                             <!-- Deleting activity component -->
                                             <button id="delete-btn-<?php echo $time; ?>"
-                                                class="absolute top-1 right-1 text-red-400 hover:text-red-700 text-lg"
+                                                class="absolute top-3 right-6 text-red-400 hover:text-red-700 text-2xl"
                                                 onclick="deleteActivity('<?php echo $time; ?>'); event.stopPropagation();"> &times;
                                             </button>
                                             </div>
@@ -112,7 +143,7 @@
 
         <div class="basis-1/2 p-10">
             <div class="border-4 border-slate-500 border-double">
-                <div class="text-2xl font-medium text-center p-6">Welcome to your Daily Planner</div>
+                <div class="text-2xl font-medium text-center p-6">Welcome to Your Daily Planner</div>
 
                 <div class="flex justify-center items-center space-x-3">
                     <div id="toggleSwitch" class="relative w-1/3 h-10 flex items-center bg-violet-400 rounded-lg cursor-pointer transition duration-300">

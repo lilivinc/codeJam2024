@@ -163,3 +163,25 @@ function deleteTask(startingTimeToDelete, blocks) {
         }
     }
 }
+
+
+if (require.main === module) {
+
+    var conv248 = convert24To48(6.5)
+    console.log(conv248)
+
+    var conv224 = convert48To24(13)
+    console.log(conv224)
+
+    blockedTimes(13, 16, arrayBlockedBlocks);
+    console.log(arrayBlockedBlocks);
+
+    blockedTimes(3, 4, arrayBlockedBlocks);
+    console.log(arrayBlockedBlocks);
+
+    var newTaskTimes = availableBlocks(1, arrayBlockedBlocks);
+    console.log(newTaskTimes);
+
+    //deleteTask (15, blocksSchedule)
+    //console.log(blocksSchedule)
+}
