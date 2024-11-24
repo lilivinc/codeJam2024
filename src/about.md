@@ -12,14 +12,15 @@ Don’t waste time on the planning part, spend more time on the doing part!
 
 ## **How we built it**
 
-HTML, Tailwind CSS and PHP were mainly used for the interface.
-We used Javascript to loop through the existing tasks and return valid start times for the new moveable task. 
+Frontend: HTML, Tailwind CSS and php were mostly used for the interface.
+
+Backend: We used Javascript to loop through the existing tasks and return valid start times. 
 
 
 
 ## **Challenges we ran into**
 
-The most challenging part was to assemble the different parts of the code. We spent a lot of time looking for ways to make the different languages interact and reference the objects created in the different files.
+The most challenging part was to assemble the different parts of the code, especially when it came to user input. We spent a lot of time looking for ways to make the different languages interact and reference the objects created in the different files.
 
 
 ## **What we learned**
