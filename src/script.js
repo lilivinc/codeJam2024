@@ -2,8 +2,8 @@
 
 const lenDay = 48;
 var arrayBlockedBlocks = [];
-// var lenTask = document.getElementById('inputChiffreChoisi').value;
-// check with Lili
+var lenTask = document.getElementById('inputChiffreChoisi').value;
+var blocksSchedule = document.getElementById('blocks');
 
 
 function convert24To48(timeIn24) {
@@ -47,23 +47,7 @@ function availableBlocks(lenTask, arrayBlockedBlocks) {
 }
 
 
-if (require.main === module) {
-
-    var conv248 = convert24To48(6.5) 
-    console.log(conv248)
-
-    var conv224 = convert48To24(13) 
-    console.log(conv224)
-
-    blockedTimes(13, 16, arrayBlockedBlocks);
-    console.log(arrayBlockedBlocks);
-
-    blockedTimes(3, 4, arrayBlockedBlocks);
-    console.log(arrayBlockedBlocks);
-
-    var newTaskTimes = availableBlocks(1, arrayBlockedBlocks);
-    console.log(newTaskTimes);
-}function addBlock(type, name, startingTime, endingTime) {
+function addBlock(type, name, startingTime, endingTime) {
     alert("test");
     // Create a FormData object to send data to the server
     const formData = new FormData();
@@ -88,8 +72,6 @@ if (require.main === module) {
     location.reload();
 }
 
-// The PHP variable $jsonBlocks is echoed into the JavaScript variable blocks
-var blocks = <?php echo $jsonBlocks; ?>;
 
 function deleteTask (startingTimeToDelete, blocks) {
     for (let eventIndex = 0 ; eventIndex < blocks.length; eventIndex++) {
@@ -97,4 +79,26 @@ function deleteTask (startingTimeToDelete, blocks) {
             blocks.splice(eventIndex, eventIndex +1)
         }
     }
+}
+
+
+if (require.main === module) {
+
+    var conv248 = convert24To48(6.5) 
+    console.log(conv248)
+
+    var conv224 = convert48To24(13) 
+    console.log(conv224)
+
+    blockedTimes(13, 16, arrayBlockedBlocks);
+    console.log(arrayBlockedBlocks);
+
+    blockedTimes(3, 4, arrayBlockedBlocks);
+    console.log(arrayBlockedBlocks);
+
+    var newTaskTimes = availableBlocks(1, arrayBlockedBlocks);
+    console.log(newTaskTimes);
+
+    //deleteTask (15, blocksSchedule)
+    //console.log(blocksSchedule)
 }
