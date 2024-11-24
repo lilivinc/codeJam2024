@@ -2,8 +2,7 @@
 
 const lenDay = 48;
 var arrayBlockedBlocks = [];
-// var lenTask = document.getElementById('inputChiffreChoisi').value;
-// check with Lili
+var lenTask = document.getElementById("durationLine2").value;
 
 function convert24To48(timeIn24) {
     var floatTimeIn24 = parseFloat(timeIn24)
@@ -208,7 +207,7 @@ function randomValidBlock(arrayValidStartTimes) {
     return randStartTime;
 }
 
-
+/*
 if (require.main === module) {
 
     var conv248 = convert24To48(6.5)
@@ -228,7 +227,8 @@ if (require.main === module) {
 
     //deleteTask (15, blocksSchedule)
     //console.log(blocksSchedule)
-}*/
+}
+*/
 
 function test(txt) {
     console.log(txt);
