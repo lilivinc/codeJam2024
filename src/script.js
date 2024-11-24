@@ -201,6 +201,14 @@ function deleteTask(startingTimeToDelete, blocks) {
 }
 
 
+function randomValidBlock(arrayValidStartTimes) {
+    var lenArray = arrayValidStartTimes.length;
+    var randIndex = Math.floor(Math.random()*lenArray);
+    var randStartTime = arrayValidStartTimes[randIndex];
+    return randStartTime;
+}
+
+
 if (require.main === module) {
 
     var conv248 = convert24To48(6.5)
