@@ -67,7 +67,7 @@ if (require.main === module) {
 }*/
 
 function addBlock(id, type, name, startingTime, endingTime) {
-    alert("test");
+    console.log("test");
     // Create a FormData object to send data to the server
     const formData = new FormData();
     formData.append('id', id);
@@ -84,7 +84,7 @@ function addBlock(id, type, name, startingTime, endingTime) {
         .then(response => response.json()) // assuming PHP returns a JSON response
         .then(data => {
             console.log('Success:', data);
-            alert('Block added successfully!');
+            console.log('Block added successfully!');
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -93,7 +93,7 @@ function addBlock(id, type, name, startingTime, endingTime) {
 }
 
 function updateBlock(id, type, name, startingTime, endingTime) {
-    alert("Attempting to update block");
+    console.log("Attempting to update block");
 
     // Create a FormData object to send data to the server
     const formData = new FormData();
@@ -111,9 +111,9 @@ function updateBlock(id, type, name, startingTime, endingTime) {
         .then(response => response.json()) // Assuming PHP returns a JSON response
         .then(data => {
             if (data.updated) {
-                alert(`Block with ID ${id} was updated successfully!`);
+                console.log(`Block with ID ${id} was updated successfully!`);
             } else {
-                alert(`Block with ID ${id} was not found. Update failed.`);
+                console.log(`Block with ID ${id} was not found. Update failed.`);
             }
             console.log('Server Response:', data);
         })
@@ -125,7 +125,7 @@ function updateBlock(id, type, name, startingTime, endingTime) {
 
 
 function removeBlock(id) {
-    alert("Attempting to remove block");
+    console.log("Attempting to remove block");
 
     // Create a FormData object to send the block ID
     const formData = new FormData();
@@ -139,9 +139,9 @@ function removeBlock(id) {
         .then(response => response.json()) // Parse response as JSON
         .then(data => {
             if (data.removed) {
-                alert(`Block with ID ${id} was removed successfully!`);
+                console.log(`Block with ID ${id} was removed successfully!`);
             } else {
-                alert(`Block with ID ${id} was not found. Removal failed.`);
+                console.log(`Block with ID ${id} was not found. Removal failed.`);
             }
             console.log('Server Response:', data);
         })
@@ -164,7 +164,7 @@ function deleteTask(startingTimeToDelete, blocks) {
     }
 }
 
-
+/*
 if (require.main === module) {
 
     var conv248 = convert24To48(6.5)
@@ -184,4 +184,24 @@ if (require.main === module) {
 
     //deleteTask (15, blocksSchedule)
     //console.log(blocksSchedule)
+}*/
+
+function test(txt) {
+    console.log(txt);
+}
+
+function addEvent() {
+    console.log("test add event")
+
+    var type = document.getElementById("menuButton2").getAttribute("data-value");
+    var name = document.getElementById("nameOfEvent").value
+    var startingTime = document.getElementById("startingTime").value;
+    var endingTime = document.getElementById("endingTime").value;
+    var id = startingTime;
+    console.log("name: ", name)
+    console.log("tyep: ", type)
+    console.log("time: ", startingTime)
+    console.log("time: ", endingTime)
+    addBlock(id, type, name, startingTime, endingTime);
+
 }

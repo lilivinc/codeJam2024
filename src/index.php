@@ -1,3 +1,6 @@
+<?php
+  require ('addBlock.php');
+?>
 <!doctype html>
 <html>
 
@@ -9,7 +12,7 @@
     <script src="script.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <script> var blocks = <?php echo $jsonBlocks; ?>; </script>
+    
 
     <style>
         .activity-block { 
@@ -108,27 +111,46 @@
                                         <?php echo $time; ?>
                                     </div>
                                 
-                                    <!-- Activity Block (Clickable) -->
 
+                                    <!-- Activity Block (Clickable) -->
                                     <div class="flex-1 relative p-2">
-                                        <?php if (array_key_exists($time, $activities)) { ?>
-                                            <div id="activity-<?php echo $time; ?>" 
-                                                class="activity-block bg-gray-200 p-7 rounded-lg cursor-pointer hover:bg-gray-300"
-                                                onclick="selectActivity('<?php echo $time; ?>')">
+                                        <?php //if (array_key_exists($time, $activities)) { 
+                                        foreach ($blocks as $block){ 
+                                            if ($time == $block["startingTime"]){
+                                                $id =$block["id"]; ?>
+                                            <div id="activity-<?php echo $time; ?>"
+                                                class="activity-block  p-4 rounded-lg cursor-pointer hover:bg-gray-300"
+                                                >
 
                                                 <!--Activity text (dpeends on list of activity from above-->
                                                 <p id="activity-text-<?php echo $time; ?>" class="text-gray-600 font-medium">
-                                                    <?php echo $activities[$time]; ?>
+                                                    <?php echo $block["name"]; ?>; <?php $block["type"]?>
                                                 </p>
                                             
                                             <!-- Deleting activity component -->
                                             <button id="delete-btn-<?php echo $time; ?>"
-                                                class="absolute top-3 right-6 text-red-400 hover:text-red-700 text-2xl"
-                                                onclick="deleteActivity('<?php echo $time; ?>'); event.stopPropagation();"> &times;
+                                                class="absolute w-8 top-3 right-4 bg-slate-600 text-red-400 hover:text-red-700 text-2xl rounded-full"
+                                                onclick="removeBlock(<?php echo $id ?>)"> &times;
                                             </button>
+                                            
                                             </div>
-                                        <?php } ?>
+                                            <script>
+                                                function putAppropriateColor(id, type){
+                                                    const element = document.getElementById(id);
+                                                    //element.classList.remove("bg-gray-200"); // Remove existing background color
+                                                    console.log(type)
+                                                    if (type == "4") {element.classList.add("bg-sky-400");}
+                                                    if (type == "1") {element.classList.add("bg-violet-400");}
+                                                    if (type == "2") {element.classList.add("bg-pink-400");}
+                                                    if (type == "3") {element.classList.add("bg-lime-400");}
+                                                }
+
+                                                putAppropriateColor("activity-<?php echo $time; ?>","<?php echo $block["type"]?>");
+                                            </script>
+                                            <?php if("0" == $block["type"]){?>
+                                        <?php }}} ?>
                                     </div>
+                                    
                                 </div>
 
                         <?php } } ?> 
@@ -163,7 +185,7 @@
                 </div>
                 <div id="durationLine" class="z-10 flex relative p-6 opacity-25">
                     <div class="p-2">Duration:</div>
-                    <button id="menuButton" class="w-4/12 border-2 border-solid rounded-lg px-2 py-0.5 ml-11" disabled></button>
+                    <button id="menuButton" class="w-4/12 border-2 border-solid rounded-lg px-2 py-0.5 ml-11 bg-white" disabled></button>
                     <div id="dropdownMenu" class="absolute mt-2 w-48 bg-white shadow-lg rounded-lg border overflow-y-auto max-h-64 hidden">
                         <ul id="menuItems" class="divide-y divide-gray-200">
                             <li class="px-4 py-2 hover:bg-gray-100" data-value="0:30">0h30</li>
@@ -185,9 +207,25 @@
                     <div class="p-2 ">Ending Time:</div>
                     <input id="endingTime" type="text" class=" w-4/12 border-2 border-solid rounded-lg px-2 py-0.5 ml-4">
                 </div>
+                
+
+                <div id="durationLine2" class="z-10 flex relative p-6">
+                    <div class="p-2">Type:</div>
+                    <button id="menuButton2" class="w-4/12 border-2 border-solid rounded-lg px-2 py-0.5 ml-11 bg-white"></button>
+                    <div id="dropdownMenu2" class="absolute mt-2 w-48 bg-white shadow-lg rounded-lg border overflow-y-auto max-h-64 hidden">
+                        <ul id="menuItems2" class="divide-y divide-gray-200">
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="4">Class</li>
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="1">Study</li>
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="2">Eat</li>
+                            <li class="px-4 py-2 hover:bg-gray-100" data-value="3">Relax</li>
+                    </div>
+                    
+                </div>
+                
+                
 
                 <div class="z-2 flex flex-row relative pl-6 p-6 justify-center">
-                    <button id="buttonAddEvent" class="px-4 py-2 bg-violet-400 text-white font-semibold rounded-lg">
+                    <button id="buttonAddEvent" class="px-4 py-2 bg-violet-400 text-white font-semibold rounded-lg" onclick="addEvent()">
                         Add Event
                     </button>
                 </div>
@@ -232,6 +270,40 @@
             menuButton.textContent = `${duration}`;
         }
     });
+
+
+    const menuButton2 = document.getElementById('menuButton2');
+    const dropdownMenu2 = document.getElementById('dropdownMenu2');
+    var duration2;
+
+    menuButton2.addEventListener('click', () => {
+        dropdownMenu2.classList.toggle('hidden'); // Toggles the visibility
+    });
+
+    // Optional: Close the menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!menuButton2.contains(e.target) && !dropdownMenu2.contains(e.target)) {
+            dropdownMenu2.classList.add('hidden');
+        }
+    });
+
+    dropdownMenu2.addEventListener('click', (e) => {
+        dropdownMenu2.classList.add('hidden');
+    })
+
+    menuItems2.addEventListener('click', (e) => {
+        if (e.target.tagName === 'LI') { // Ensure it's a list item
+            var name = e.target.innerHTML;
+            console.log(name);
+            duration2 = e.target.dataset.value; // Get value from data attribute
+            console.log('Selected Value:', duration2); // Log or use the value
+            dropdownMenu2.classList.add('hidden'); // Optionally hide the menu
+            menuButton2.classList.add('border-blue-500');
+            menuButton2.textContent = `${name}`;
+            document.getElementById("menuButton2").dataset.value = duration2;
+        }
+    });
+
 
     nameOfEvent.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
@@ -301,6 +373,7 @@
         buttonAddEvent.classList.add("bg-sky-400");
     }
 });
+
 
 </script>
 </html>
